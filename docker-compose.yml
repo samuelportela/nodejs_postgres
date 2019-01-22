@@ -1,0 +1,18 @@
+version: "3"
+services:
+  postgres:
+    image: library/postgres
+    volumes:
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=docker
+  node:
+    build: .
+    volumes:
+      - ./:/srv/test
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
