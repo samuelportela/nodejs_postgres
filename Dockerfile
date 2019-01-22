@@ -1,4 +1,4 @@
-FROM node:7
+FROM node:11.7.0
 RUN mkdir /test
 ADD . /test
 WORKDIR /test
